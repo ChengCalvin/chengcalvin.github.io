@@ -3,9 +3,6 @@ body {
   font-family: "Taviraj", serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url("./images/charlevoix\ hike.jpg");
-  background-position: center 20%;
-  background-repeat: no-repeat;
 }
 
 code {
