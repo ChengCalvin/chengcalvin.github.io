@@ -1,29 +1,35 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import styled from "styled-components";
+import Header from "../Header/Header";
 
 import Intro from "../Intro/Intro";
-import Skills from "../Skills/Skills";
+import CustomizedTimeline from "../Timeline/Timeline";
 
 const ProfileIntro = styled.main`
   display: flex;
   justify-content: center;
-  position: relative;
   flex-direction: column;
-  padding-left: 20vw;
-  padding-right: 20vw;
-
-  @media (max-width: 375px) {
-    padding-left: 3vw;
-    padding-right: 3vw;
-  }
+  position: absolute;
+  padding-top: 4rem;
+  z-index: 1;
+  width: 100%;
 `;
 
-const Page = () => (
-  <ProfileIntro>
-    <Intro />
-    <Skills />
-  </ProfileIntro>
-);
+const Page = () => {
+  useEffect(() => {
+    document.getElementById("intro").scrollIntoView();
+  }, []);
+
+  return (
+    <>
+      <Header />
+      <ProfileIntro>
+        <Intro />
+        <CustomizedTimeline />
+      </ProfileIntro>
+    </>
+  );
+};
 
 export default Page;

@@ -1,53 +1,54 @@
 import React from "react";
 import styled from "styled-components";
-import SkillBar from "react-skillbars";
+import WebIcon from "../../images/webicon.png";
+import ReactIcon from "../../images/reacticon.png";
+import ReduxIcon from "../../images/reduxicon.png";
+import PythonIcon from "../../images/pythonicon.png";
+import SocialMedia from "../SocialMedia/SocialMedia";
+import Slide from "@material-ui/core/Slide";
 
 const Skills = () => {
   const Container = styled.div`
-    color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
   `;
 
-  const SkillBarBox = styled.div`
-    width: 50%;
+  const SkillContainer = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
   `;
 
-  const skills = [
-    {
-      type: "React",
-      level: "80",
-      color: { bar: "#61DBFB", title: { background: "#61DBFB" } },
-    },
-    {
-      type: "JavaScript",
-      level: "70",
-      color: { bar: "#FFD700", title: { background: "#FFD700" } },
-    },
-    {
-      type: "HTML",
-      level: "70",
-      color: { bar: "#FF5733", title: { background: "#FF5733" } },
-    },
-    {
-      type: "CSS",
-      level: "80",
-      color: { bar: "#3380FF", title: { background: "#3380FF" } },
-    },
-    {
-      type: "Python",
-      level: "60",
-      color: { bar: "#306998", title: { background: "#306998" } },
-    },
-  ];
+  const IconIMG = styled.img`
+    width: 32%;
+  `;
+
+  const SecondarySizeIconIMG = styled(IconIMG)`
+    width: 20%;
+  `;
 
   return (
     <Container>
-      <h1>My Strong Points</h1>
-      <SkillBarBox>
-        <SkillBar skills={skills} height={20} />
-      </SkillBarBox>
+      <h1>Technical Skills</h1>
+      <SkillContainer>
+        <Slide direction="left" in={true} timeout={1000}>
+          <SecondarySizeIconIMG src={ReactIcon} alt="reacticon" />
+        </Slide>
+        <Slide direction="left" in={true} timeout={2000}>
+          <SecondarySizeIconIMG src={ReduxIcon} alt="reduxicon" />
+        </Slide>
+        <Slide direction="left" in={true} timeout={2500}>
+          <IconIMG src={WebIcon} alt="webicon" />
+        </Slide>
+        <Slide direction="left" in={true} timeout={3000}>
+          <SecondarySizeIconIMG src={PythonIcon} alt="pythonicon" />
+        </Slide>
+      </SkillContainer>
+
+      <SocialMedia />
     </Container>
   );
 };
