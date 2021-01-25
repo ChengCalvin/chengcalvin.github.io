@@ -8,8 +8,6 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 require("dotenv").config();
 
-const USER_ID = "user_r0gjxmlxZQlW7z56Pt59K";
-
 const Container = styled.div`
   width: 50%;
   height: 50%;
@@ -62,7 +60,7 @@ const Contact = () => {
             process.env.REACT_APP_SERVICE_ID,
             process.env.REACT_APP_TEMPLATE_ID,
             contactForm,
-            process.env.USER_ID
+            process.env.REACT_APP_USER_ID
           )
           .then((response) => console.log(response))
       : alert("Please verify that you are not a robot.");
