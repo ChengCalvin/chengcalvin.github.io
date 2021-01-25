@@ -7,29 +7,29 @@ import PythonIcon from "../../images/pythonicon.png";
 import SocialMedia from "../SocialMedia/SocialMedia";
 import Slide from "@material-ui/core/Slide";
 
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+`;
+
+const SkillContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+`;
+
+const IconIMG = styled.img`
+  width: 32%;
+`;
+
+const SecondarySizeIconIMG = styled(IconIMG)`
+  width: 20%;
+`;
+
 const Skills = () => {
-  const Container = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-  `;
-
-  const SkillContainer = styled.div`
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 2rem;
-  `;
-
-  const IconIMG = styled.img`
-    width: 32%;
-  `;
-
-  const SecondarySizeIconIMG = styled(IconIMG)`
-    width: 20%;
-  `;
-
   return (
     <Container>
       <h1>Technical Skills</h1>

@@ -25,43 +25,43 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const Container = styled.div`
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  padding-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 20vw;
+  padding-right: 20vw;
+
+  @media (max-width: 768px) {
+    padding-left: 3vw;
+    padding-right: 3vw;
+  }
+  @media (max-width: 367px) {
+    padding-left: 1vw;
+    padding-right: 1vw;
+  }
+`;
+
+const StyledTypography = styled(Typography)`
+  color: black;
+`;
+
+const CareerTitle = styled(Typography)`
+  color: black;
+`;
+
+const TimelineContainer = styled.div`
+  width: 90%;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+`;
+
 const CustomizedTimeline = () => {
   const classes = useStyles();
-
-  const Container = styled.div`
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    padding-top: 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-left: 20vw;
-    padding-right: 20vw;
-
-    @media (max-width: 768px) {
-      padding-left: 3vw;
-      padding-right: 3vw;
-    }
-    @media (max-width: 367px) {
-      padding-left: 1vw;
-      padding-right: 1vw;
-    }
-  `;
-
-  const StyledTypography = styled(Typography)`
-    color: black;
-  `;
-
-  const CareerTitle = styled(Typography)`
-    color: black;
-  `;
-
-  const TimelineContainer = styled.div`
-    width: 90%;
-    height: fit-content;
-    display: flex;
-    justify-content: center;
-  `;
 
   return (
     <Container id="timeline">

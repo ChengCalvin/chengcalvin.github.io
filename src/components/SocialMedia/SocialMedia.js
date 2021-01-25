@@ -2,35 +2,37 @@ import React from "react";
 import styled from "styled-components";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import GitHubIcon from "@material-ui/icons/GitHub";
+import DescriptionIcon from "@material-ui/icons/Description";
 import Link from "@material-ui/core/Link";
 import Avatar from "@material-ui/core/Avatar";
+import resume from "../../Resume/calvinresume.pdf";
+
+const SocialMediaContainer = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid darkgray;
+  padding-top: 2rem;
+`;
+
+const SingleSocialMediaItem = styled.div`
+  width: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+`;
+
+const StyledAvatar = styled(Avatar)`
+  && {
+    background-color: #337d87;
+    :hover {
+      background-color: rgb(130, 196, 159, 0.7);
+    }
+  }
+`;
 
 const SocialMedia = () => {
-  const SocialMediaContainer = styled.div`
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-top: 1px solid darkgray;
-    padding-top: 2rem;
-  `;
-
-  const SingleSocialMediaItem = styled.div`
-    width: 20%;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-  `;
-
-  const StyledAvatar = styled(Avatar)`
-    && {
-      background-color: #337d87;
-      :hover {
-        background-color: rgb(130, 196, 159, 0.7);
-      }
-    }
-  `;
-
   return (
     <SocialMediaContainer>
       <SingleSocialMediaItem>
@@ -52,6 +54,13 @@ const SocialMedia = () => {
         >
           <StyledAvatar>
             <GitHubIcon />
+          </StyledAvatar>
+        </Link>
+      </SingleSocialMediaItem>
+      <SingleSocialMediaItem>
+        <Link href={resume} target="_blank" rek="noopener">
+          <StyledAvatar>
+            <DescriptionIcon />
           </StyledAvatar>
         </Link>
       </SingleSocialMediaItem>

@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
-import ProfileImg from "../../images/charlevoixprofile.jpg";
+import ProfileImg from "../../images/profile.jpg";
 import { makeStyles } from "@material-ui/core/styles";
 import Avatar from "@material-ui/core/Avatar";
 import Paper from "@material-ui/core/Paper";
@@ -26,8 +26,8 @@ const useStyles = makeStyles((theme) => ({
 
 const Container = styled.div`
   text-align: center;
-  padding-left: 20vw;
-  padding-right: 20vw;
+  padding-left: 24vw;
+  padding-right: 24vw;
   padding-top: 15vh;
   margin-bottom: 15vh;
   display: flex;
@@ -54,6 +54,14 @@ const Content = styled.div`
   position: relative;
   margin: 5rem 5rem;
   height: fit-content;
+
+  p {
+    width: 80%;
+    margin: auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
   @media (max-width: 768px) {
     margin: 5rem 0.5rem;
   }
@@ -84,8 +92,6 @@ const ProfileImageContainer = styled.div`
 const Intro = () => {
   const classes = useStyles();
 
-  useEffect(() => {});
-
   return (
     <Container id="intro">
       <Zoom in={true} timeout={{ enter: 2000, exit: 2000 }}>
@@ -101,9 +107,11 @@ const Intro = () => {
             <Name>Calvin Cheng</Name>
             <Title>Full-Stack Developer, Montreal</Title>
             <p>
-              I am an Electrical Engineer looking for a career in software
-              development, and I am passionate about what I can do to shape the
-              world of today.
+              I am Full-Stack Software Developer with an Electrical Engineering
+              background, and I am always thinking about things I can do to
+              shape the world of today. <br />
+              <br />I like to do sports, explore new food and places, learn
+              about business and investments, and coding.
             </p>
             <SocialMedia />
           </Content>
