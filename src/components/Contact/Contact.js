@@ -69,7 +69,8 @@ const Contact = () => {
     });
   };
 
-  const onFormSubmit = (_event) => {
+  const onFormSubmit = (event) => {
+    event.preventDefault();
     captchaVerified
       ? emailjs
           .send(
