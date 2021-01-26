@@ -5,6 +5,7 @@ import Header from "../Header/Header";
 
 import Intro from "../Intro/Intro";
 import CustomizedTimeline from "../Timeline/Timeline";
+import Footer from "../Footer/Footer";
 
 const ProfileIntro = styled.main`
   display: flex;
@@ -28,6 +29,7 @@ const Page = () => {
       <ProfileIntro>
         <Intro />
         <CustomizedTimeline />
+        <Footer />
       </ProfileIntro>
     </>
   );

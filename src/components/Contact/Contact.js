@@ -58,6 +58,8 @@ const Contact = () => {
     message: "",
   });
 
+  const history = useHistory();
+
   const [captchaVerified, setCaptchaVerified] = useState(false);
 
   const formFieldChangeHandler = (event) => {
@@ -80,7 +82,7 @@ const Contact = () => {
           .then((response) => {
             console.log(response);
             setCaptchaVerified(false);
-            useHistory.push("/");
+            history.push("/");
           })
       : alert("Please verify that you are not a robot.");
   };
