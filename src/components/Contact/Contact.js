@@ -91,7 +91,7 @@ const Contact = () => {
             if (response.status === 200) {
               setCaptchaVerified(false);
               setMessageIsSent(true);
-              history.push("/");
+              history.go(0);
             }
           })
       : alert("Please verify that you are not a robot.");
