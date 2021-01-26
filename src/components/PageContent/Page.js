@@ -14,6 +14,7 @@ const ProfileIntro = styled.main`
   padding-top: 4rem;
   z-index: 1;
   width: 100%;
+  flex-grow: 1;
 `;
 
 const Page = () => {

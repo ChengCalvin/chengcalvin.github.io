@@ -75,7 +75,10 @@ const Contact = () => {
             contactForm,
             process.env.REACT_APP_USER_ID
           )
-          .then((response) => console.log(response))
+          .then((response) => {
+            console.log(response);
+            setCaptchaVerified(false);
+          })
       : alert("Please verify that you are not a robot.");
   };
 
