@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import emailjs from "emailjs-com";
 import ReCAPTCHA from "react-google-recaptcha";
@@ -66,7 +67,8 @@ const Contact = () => {
     });
   };
 
-  const onFormSubmit = (_event) => {
+  const onFormSubmit = (event) => {
+    event.preventDefault();
     captchaVerified
       ? emailjs
           .send(
@@ -78,6 +80,7 @@ const Contact = () => {
           .then((response) => {
             console.log(response);
             setCaptchaVerified(false);
+            useHistory.push("/");
           })
       : alert("Please verify that you are not a robot.");
   };
