@@ -6,6 +6,7 @@ import Avatar from "@material-ui/core/Avatar";
 import Paper from "@material-ui/core/Paper";
 import SocialMedia from "../SocialMedia/SocialMedia";
 import Zoom from "@material-ui/core/Zoom";
+import TrackVisibility from "react-on-screen";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,13 +23,16 @@ const useStyles = makeStyles((theme) => ({
     width: theme.spacing(30),
     height: theme.spacing(30),
   },
+  paper: {
+    padding: "0.8rem",
+  },
 }));
 
 const Container = styled.div`
   text-align: center;
   padding-left: 24vw;
   padding-right: 24vw;
-  padding-top: 15vh;
+  padding-top: 10vh;
   margin-bottom: 15vh;
   display: flex;
   flex-direction: column;
@@ -94,29 +98,33 @@ const Intro = () => {
 
   return (
     <Container id="intro">
-      <Zoom in={true} timeout={{ enter: 2000, exit: 2000 }}>
-        <Paper elevation={5} width="auto">
-          <Content>
-            <ProfileImageContainer>
-              <Avatar
-                src={ProfileImg}
-                alt="Calvin Cheng"
-                className={classes.large}
-              />
-            </ProfileImageContainer>
-            <Name>Calvin Cheng</Name>
-            <Title>Full-Stack Developer, Montreal</Title>
-            <p>
-              I am Full-Stack Software Developer with an Electrical Engineering
-              background, and I am always thinking about things I can do to
-              shape the world of today. <br />
-              <br />I like to do sports, explore new food and places, learn
-              about business and investments, and coding.
-            </p>
-            <SocialMedia />
-          </Content>
-        </Paper>
-      </Zoom>
+      <TrackVisibility partialVisibility>
+        {({ isVisible }) => (
+          <Zoom in={isVisible} timeout={{ enter: 2000 }}>
+            <Paper elevation={5} width="auto" className={classes.paper}>
+              <Content>
+                <ProfileImageContainer>
+                  <Avatar
+                    src={ProfileImg}
+                    alt="Calvin Cheng"
+                    className={classes.large}
+                  />
+                </ProfileImageContainer>
+                <Name>Calvin Cheng</Name>
+                <Title>Full-Stack Developer, Montreal</Title>
+                <p>
+                  I am Full-Stack Software Developer with an Electrical
+                  Engineering background, and I am always thinking about things
+                  I can do to shape the world of today. <br />
+                  <br />I like to do sports, explore new food and places, learn
+                  about business and investments, and coding.
+                </p>
+                <SocialMedia />
+              </Content>
+            </Paper>
+          </Zoom>
+        )}
+      </TrackVisibility>
     </Container>
   );
 };

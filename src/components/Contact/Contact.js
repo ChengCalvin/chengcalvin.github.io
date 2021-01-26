@@ -11,6 +11,10 @@ require("dotenv").config();
 const Container = styled.div`
   width: 50%;
   height: 50%;
+
+  @media (max-width: 768px) {
+    width: 80%;
+  }
 `;
 
 const Content = styled.div`
@@ -33,6 +37,16 @@ const StyledTextField = styled(TextField)`
   && {
     margin-top: 1rem;
     margin-bottom: 1rem;
+    width: 95%;
+  }
+`;
+
+const StyledButton = styled(Button)`
+  && {
+    background-color: #337d87;
+    :hover {
+      background-color: rgb(130, 196, 159, 0.7);
+    }
   }
 `;
 
@@ -52,8 +66,7 @@ const Contact = () => {
     });
   };
 
-  const onFormSubmit = (event) => {
-    event.preventDefault();
+  const onFormSubmit = (_event) => {
     captchaVerified
       ? emailjs
           .send(
@@ -72,7 +85,7 @@ const Contact = () => {
 
   return (
     <Container>
-      <Paper>
+      <Paper elevation={3}>
         <Content>
           <Typography variant="h5">Reach out to me here!</Typography>
           <Form onSubmit={onFormSubmit}>
@@ -108,7 +121,7 @@ const Contact = () => {
             ) : (
               <></>
             )}
-            <Button type="submit">Send</Button>
+            <StyledButton type="submit">Send</StyledButton>
           </Form>
         </Content>
       </Paper>

@@ -5,7 +5,7 @@ import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 
-const Container = styled.div`
+const Container = styled.header`
   width: 100%;
   height: 4rem;
   background-color: #337d87;
@@ -38,6 +38,10 @@ const ListItem = styled.li`
     height: 100%;
     background-color: rgb(130, 196, 159, 0.5);
     cursor: pointer;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
   }
 `;
 

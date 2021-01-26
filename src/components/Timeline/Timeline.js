@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { makeStyles } from "@material-ui/core/styles";
 import Timeline from "@material-ui/lab/Timeline";
@@ -15,20 +15,23 @@ import Zoom from "@material-ui/core/Zoom";
 import Link from "@material-ui/core/Link";
 import LanguageIcon from "@material-ui/icons/Language";
 import GitHubIcon from "@material-ui/icons/GitHub";
+import ArrowDropUpIcon from "@material-ui/icons/ArrowDropUp";
+import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
+import Avatar from "@material-ui/core/Avatar";
+import TrackVisibility from "react-on-screen";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
     padding: "6px 16px",
   },
   secondaryTail: {
-    backgroundColor: theme.palette.primary.dark,
+    backgroundColor: "#337d87",
   },
 }));
 
 const Container = styled.div`
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-  padding-top: 2rem;
+  margin-top: 20vh;
+  margin-bottom: 20vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -49,202 +52,337 @@ const StyledTypography = styled(Typography)`
   color: black;
 `;
 
-const CareerTitle = styled(Typography)`
+const StyledTypographyTitle = styled(Typography)`
   color: black;
+  && {
+    margin-bottom: 2rem;
+  }
+`;
+
+const TypographyGray = styled(Typography)`
+  color: gray;
+`;
+
+const TimelineItemTitle = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 const TimelineContainer = styled.div`
-  width: 90%;
+  width: 100%;
   height: fit-content;
   display: flex;
   justify-content: center;
 `;
 
+const IconBox = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const StyledAvatar = styled(Avatar)`
+  && {
+    background-color: #337d87;
+    margin: 0.1rem;
+    :hover {
+      background-color: rgb(130, 196, 159, 0.7);
+    }
+  }
+`;
+
 const CustomizedTimeline = () => {
   const classes = useStyles();
 
+  const [openExperience, setOpenExperience] = useState("");
+
   return (
     <Container id="timeline">
-      <CareerTitle variant="h4">My Career Path</CareerTitle>
-      <TimelineContainer>
-        <Timeline align="alternate" width="50%">
-          <TimelineItem>
-            <TimelineContent></TimelineContent>
-            <TimelineSeparator>
-              <TimelineDot className={classes.secondaryTail}></TimelineDot>
-              <TimelineConnector className={classes.secondaryTail} />
-            </TimelineSeparator>
-            <TimelineOppositeContent>
-              <Zoom in={true} timeout={2000}>
-                <StyledTypography align="left" variant="body1">
-                  <b>Today</b>
-                </StyledTypography>
-              </Zoom>
-            </TimelineOppositeContent>
-          </TimelineItem>
-          <TimelineItem>
-            <TimelineOppositeContent>
-              <Zoom in={true} timeout={2000}>
-                <StyledTypography variant="body1">
-                  <b>Fall, 2020</b>
-                </StyledTypography>
-              </Zoom>
-            </TimelineOppositeContent>
-            <TimelineSeparator>
-              <TimelineDot className={classes.secondaryTail}></TimelineDot>
-              <TimelineConnector className={classes.secondaryTail} />
-            </TimelineSeparator>
-            <TimelineContent>
-              <Slide direction="right" in={true} timeout={2000}>
-                <Paper elevation={3} className={classes.paper}>
-                  <Typography variant="h6" component="h1" align="left">
-                    REL Realty Advisors{" "}
-                    <Link
-                      href="https://relra.com/"
-                      target="_blank"
-                      rek="noopener"
-                    >
-                      <LanguageIcon />
-                    </Link>
-                  </Typography>
+      <StyledTypographyTitle variant="h4">My Career Path</StyledTypographyTitle>
+      <TrackVisibility style={{ width: "100%" }} partialVisibility>
+        {({ isVisible }) => (
+          <Zoom in={isVisible} timeout={{ enter: 2000 }}>
+            <TimelineContainer>
+              <Timeline align="alternate">
+                <TimelineItem>
+                  <TimelineContent>
+                    <Zoom in={isVisible} timeout={5000}>
+                      <StyledTypography align="right" variant="body1">
+                        <b>Today</b>
+                      </StyledTypography>
+                    </Zoom>
+                  </TimelineContent>
+                  <TimelineSeparator>
+                    <TimelineDot
+                      className={classes.secondaryTail}
+                    ></TimelineDot>
+                    <TimelineConnector className={classes.secondaryTail} />
+                  </TimelineSeparator>
+                  <TimelineOppositeContent>
+                    <Slide direction="left" in={isVisible} timeout={5000}>
+                      <Paper className={classes.paper}>
+                        <Typography align="left">
+                          Continuous learning
+                        </Typography>
+                      </Paper>
+                    </Slide>
+                  </TimelineOppositeContent>
+                </TimelineItem>
+                <TimelineItem>
+                  <TimelineOppositeContent>
+                    <Zoom in={isVisible} timeout={4000}>
+                      <StyledTypography variant="body1">
+                        <b>Fall, 2020</b>
+                      </StyledTypography>
+                    </Zoom>
+                  </TimelineOppositeContent>
+                  <TimelineSeparator>
+                    <TimelineDot
+                      className={classes.secondaryTail}
+                    ></TimelineDot>
+                    <TimelineConnector className={classes.secondaryTail} />
+                  </TimelineSeparator>
+                  <TimelineContent>
+                    <Slide direction="right" in={isVisible} timeout={6000}>
+                      <Paper elevation={3} className={classes.paper}>
+                        <TimelineItemTitle>
+                          <Typography variant="h6" component="h1" align="left">
+                            REL Realty Advisors
+                          </Typography>
+                          <IconBox>
+                            <Link
+                              href="https://relra.com/"
+                              target="_blank"
+                              rek="noopener"
+                            >
+                              <StyledAvatar>
+                                <LanguageIcon />
+                              </StyledAvatar>
+                            </Link>
+                            {openExperience === "REL" ? (
+                              <ArrowDropUpIcon
+                                onClick={() => setOpenExperience("")}
+                              />
+                            ) : (
+                              <ArrowDropDownIcon
+                                onClick={() => setOpenExperience("REL")}
+                              />
+                            )}
+                          </IconBox>
+                        </TimelineItemTitle>
 
-                  <Typography align="left">
-                    Led the development of REL's founder first website
-                  </Typography>
-                  <Typography align="left">
-                    <b>Technologies</b>: JavaScript, Next, HTML, CSS, Emailjs,
-                    ReCaptcha, i18n-next
-                  </Typography>
-                </Paper>
-              </Slide>
-            </TimelineContent>
-          </TimelineItem>
-          <TimelineItem>
-            <TimelineOppositeContent>
-              <Zoom in={true} timeout={2000}>
-                <StyledTypography variant="body1">
-                  <b>Spring, 2020</b>
-                </StyledTypography>
-              </Zoom>
-            </TimelineOppositeContent>
-            <TimelineSeparator>
-              <TimelineDot className={classes.secondaryTail}></TimelineDot>
-              <TimelineConnector className={classes.secondaryTail} />
-            </TimelineSeparator>
-            <TimelineContent>
-              <Slide direction="left" in={true} timeout={2000}>
-                <Paper elevation={3} className={classes.paper}>
-                  <Typography align="left" variant="h6">
-                    E-Sport Statistic Tracker{" "}
-                    <Link
-                      href="https://guesswhoapp.herokuapp.com/"
-                      target="_blank"
-                      rek="noopener"
-                    >
-                      <LanguageIcon />
-                    </Link>
-                    {"  "}
-                    <Link
-                      href="https://github.com/ChengCalvin/guesswhoApp"
-                      target="_blank"
-                      rek="noopener"
-                    >
-                      <GitHubIcon />
-                    </Link>
-                  </Typography>
-                  <Typography align="left">
-                    The goal of this project was to get myself familiar with the
-                    disciplines involved with building a complete software
-                    product and learn how to build an app end-to-end.
-                  </Typography>
-                  <Typography align="left">
-                    <b>Technologies</b>: JavaScript, Python, React, Redux, Node,
-                    Express, MongoDB, HTML, CSS
-                  </Typography>
-                </Paper>
-              </Slide>
-            </TimelineContent>
-          </TimelineItem>
-          <TimelineItem>
-            <TimelineOppositeContent>
-              <Zoom in={true} timeout={2000}>
-                <StyledTypography variant="body1">
-                  <b>Fall, 2019</b>
-                </StyledTypography>
-              </Zoom>
-            </TimelineOppositeContent>
-            <TimelineSeparator>
-              <TimelineDot className={classes.secondaryTail}></TimelineDot>
-              <TimelineConnector className={classes.secondaryTail} />
-            </TimelineSeparator>
-            <TimelineContent>
-              <Slide direction="right" in={true} timeout={2000}>
-                <Paper elevation={3} className={classes.paper}>
-                  <Typography align="left">
-                    Self-taught: JavaScript and Python
-                  </Typography>
-                </Paper>
-              </Slide>
-            </TimelineContent>
-          </TimelineItem>
-          <TimelineItem>
-            <TimelineOppositeContent>
-              <Zoom in={true} timeout={2000}>
-                <StyledTypography variant="body1">
-                  <b>Summer, 2018</b>
-                </StyledTypography>
-              </Zoom>
-            </TimelineOppositeContent>
-            <TimelineSeparator>
-              <TimelineDot className={classes.secondaryTail}></TimelineDot>
-              <TimelineConnector className={classes.secondaryTail} />
-            </TimelineSeparator>
-            <TimelineContent>
-              <Slide direction="left" in={true} timeout={2000}>
-                <Paper elevation={3} className={classes.paper}>
-                  <Typography align="left" variant="h6" component="h1">
-                    My EE Career
-                  </Typography>
-                  <Typography align="left" variant="body2">
-                    Joined Zimmer Biomet, Summer 2018
-                  </Typography>
-                  <Typography align="left">
-                    Worked on System Requirements and Electrical Requirements
-                    Compliance
-                  </Typography>
-                  <Typography align="left" variant="body2">
-                    Joined CAE, Spring 2019
-                  </Typography>
-                  <Typography align="left">
-                    Worked on Electrical Systems CAD
-                  </Typography>
-                </Paper>
-              </Slide>
-            </TimelineContent>
-          </TimelineItem>
-          <TimelineItem>
-            <TimelineOppositeContent>
-              <Zoom in={true} timeout={2000}>
-                <StyledTypography variant="body1">
-                  <b>Spring, 2018</b>
-                </StyledTypography>
-              </Zoom>
-            </TimelineOppositeContent>
-            <TimelineSeparator>
-              <TimelineDot className={classes.secondaryTail}></TimelineDot>
-            </TimelineSeparator>
-            <TimelineContent>
-              <Slide direction="right" in={true} timeout={2000}>
-                <Paper elevatiion={3} className={classes.paper}>
-                  <Typography align="left">
-                    Graduation, Bachelor in Electrical Engineering
-                  </Typography>
-                </Paper>
-              </Slide>
-            </TimelineContent>
-          </TimelineItem>
-        </Timeline>
-      </TimelineContainer>
+                        {openExperience === "REL" ? (
+                          <Zoom in={openExperience === "REL"} timeout={1000}>
+                            <div>
+                              <Typography align="left">
+                                Led the development of REL's founder first
+                                website
+                              </Typography>
+                              <Typography align="left">
+                                <b>Technologies</b>: JavaScript, Next, HTML,
+                                CSS, Emailjs, ReCaptcha, i18n-next
+                              </Typography>
+                            </div>
+                          </Zoom>
+                        ) : (
+                          <></>
+                        )}
+                      </Paper>
+                    </Slide>
+                  </TimelineContent>
+                </TimelineItem>
+                <TimelineItem>
+                  <TimelineOppositeContent>
+                    <Zoom in={isVisible} timeout={7000}>
+                      <StyledTypography variant="body1">
+                        <b>Spring, 2020</b>
+                      </StyledTypography>
+                    </Zoom>
+                  </TimelineOppositeContent>
+                  <TimelineSeparator>
+                    <TimelineDot
+                      className={classes.secondaryTail}
+                    ></TimelineDot>
+                    <TimelineConnector className={classes.secondaryTail} />
+                  </TimelineSeparator>
+                  <TimelineContent>
+                    <Slide direction="left" in={isVisible} timeout={5000}>
+                      <Paper elevation={3} className={classes.paper}>
+                        <TimelineItemTitle>
+                          <Typography align="left" variant="h6">
+                            E-Sport Statistic Tracker{" "}
+                          </Typography>
+                          <IconBox>
+                            <Link
+                              href="https://guesswhoapp.herokuapp.com/"
+                              target="_blank"
+                              rek="noopener"
+                            >
+                              <StyledAvatar>
+                                <LanguageIcon />
+                              </StyledAvatar>
+                            </Link>
+                            {"  "}
+                            <Link
+                              href="https://github.com/ChengCalvin/guesswhoApp"
+                              target="_blank"
+                              rek="noopener"
+                            >
+                              <StyledAvatar>
+                                <GitHubIcon />
+                              </StyledAvatar>
+                            </Link>
+                            {openExperience === "EsportProject" ? (
+                              <ArrowDropUpIcon
+                                onClick={() => setOpenExperience("")}
+                              />
+                            ) : (
+                              <ArrowDropDownIcon
+                                onClick={() =>
+                                  setOpenExperience("EsportProject")
+                                }
+                              />
+                            )}
+                          </IconBox>
+                        </TimelineItemTitle>
+                        {openExperience === "EsportProject" ? (
+                          <Zoom
+                            in={openExperience === "EsportProject"}
+                            timeout={1000}
+                          >
+                            <div>
+                              <Typography align="left">
+                                The goal of this project was to get myself
+                                familiar with the disciplines involved with
+                                building a complete software product and learn
+                                how to build an app end-to-end.
+                              </Typography>
+                              <Typography align="left">
+                                <b>Technologies</b>: JavaScript, Python, React,
+                                Redux, Node, Express, MongoDB, HTML, CSS
+                              </Typography>
+                            </div>
+                          </Zoom>
+                        ) : (
+                          <></>
+                        )}
+                      </Paper>
+                    </Slide>
+                  </TimelineContent>
+                </TimelineItem>
+                <TimelineItem>
+                  <TimelineOppositeContent>
+                    <Zoom in={isVisible} timeout={6000}>
+                      <StyledTypography variant="body1">
+                        <b>Fall, 2019</b>
+                      </StyledTypography>
+                    </Zoom>
+                  </TimelineOppositeContent>
+                  <TimelineSeparator>
+                    <TimelineDot
+                      className={classes.secondaryTail}
+                    ></TimelineDot>
+                    <TimelineConnector className={classes.secondaryTail} />
+                  </TimelineSeparator>
+                  <TimelineContent>
+                    <Slide direction="right" in={isVisible} timeout={4000}>
+                      <Paper elevation={3} className={classes.paper}>
+                        <Typography align="left">
+                          Learned: React, JavaScript and Python
+                        </Typography>
+                      </Paper>
+                    </Slide>
+                  </TimelineContent>
+                </TimelineItem>
+                <TimelineItem>
+                  <TimelineOppositeContent>
+                    <Zoom in={isVisible} timeout={2000}>
+                      <StyledTypography variant="body1">
+                        <b>Summer, 2018</b>
+                      </StyledTypography>
+                    </Zoom>
+                  </TimelineOppositeContent>
+                  <TimelineSeparator>
+                    <TimelineDot
+                      className={classes.secondaryTail}
+                    ></TimelineDot>
+                    <TimelineConnector className={classes.secondaryTail} />
+                  </TimelineSeparator>
+                  <TimelineContent>
+                    <Slide direction="left" in={isVisible} timeout={6000}>
+                      <Paper elevation={3} className={classes.paper}>
+                        <TimelineItemTitle>
+                          <Typography align="left" variant="h6" component="h1">
+                            Electrical Journey
+                          </Typography>
+                          <div>
+                            {openExperience === "EEJourney" ? (
+                              <ArrowDropUpIcon
+                                onClick={() => setOpenExperience("")}
+                              />
+                            ) : (
+                              <ArrowDropDownIcon
+                                onClick={() => setOpenExperience("EEJourney")}
+                              />
+                            )}
+                          </div>
+                        </TimelineItemTitle>
+                        {openExperience === "EEJourney" ? (
+                          <Zoom
+                            in={openExperience === "EEJourney"}
+                            timeout={1000}
+                          >
+                            <div>
+                              <TypographyGray align="left" variant="body2">
+                                <i>Joined Zimmer Biomet, Summer 2018</i>
+                              </TypographyGray>
+                              <Typography align="left">
+                                Worked on System Requirements and Electrical
+                                Requirements Compliance
+                              </Typography>
+                              <TypographyGray align="left" variant="body2">
+                                <i>Joined CAE, Spring 2019</i>
+                              </TypographyGray>
+                              <Typography align="left">
+                                Worked on Electrical Systems CAD
+                              </Typography>
+                            </div>
+                          </Zoom>
+                        ) : (
+                          <></>
+                        )}
+                      </Paper>
+                    </Slide>
+                  </TimelineContent>
+                </TimelineItem>
+                <TimelineItem>
+                  <TimelineOppositeContent>
+                    <Zoom in={isVisible} timeout={3000}>
+                      <StyledTypography variant="body1">
+                        <b>Spring, 2018</b>
+                      </StyledTypography>
+                    </Zoom>
+                  </TimelineOppositeContent>
+                  <TimelineSeparator>
+                    <TimelineDot
+                      className={classes.secondaryTail}
+                    ></TimelineDot>
+                  </TimelineSeparator>
+                  <TimelineContent>
+                    <Slide direction="right" in={isVisible} timeout={5000}>
+                      <Paper elevatiion={3} className={classes.paper}>
+                        <Typography align="left">
+                          Graduation, Bachelor in Electrical Engineering
+                        </Typography>
+                      </Paper>
+                    </Slide>
+                  </TimelineContent>
+                </TimelineItem>
+              </Timeline>
+            </TimelineContainer>
+          </Zoom>
+        )}
+      </TrackVisibility>
     </Container>
   );
 };

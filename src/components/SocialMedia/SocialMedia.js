@@ -5,7 +5,7 @@ import GitHubIcon from "@material-ui/icons/GitHub";
 import DescriptionIcon from "@material-ui/icons/Description";
 import Link from "@material-ui/core/Link";
 import Avatar from "@material-ui/core/Avatar";
-import resume from "../../Resume/calvinresume.pdf";
+import resume from "../../Resume/Calvin_Cheng_CV.pdf";
 
 const SocialMediaContainer = styled.div`
   width: 100%;
