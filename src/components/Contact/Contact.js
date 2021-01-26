@@ -142,7 +142,7 @@ const Contact = () => {
             <StyledButton type="submit">Send</StyledButton>
             {messageIsSent ? (
               <StyledTypography variant="body1">
-                Message Sent! Thank you, You can click outside the box ;)
+                Message Sent, Thank you!
               </StyledTypography>
             ) : (
               <></>
