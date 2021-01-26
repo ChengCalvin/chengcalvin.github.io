@@ -69,7 +69,7 @@ const Contact = () => {
     });
   };
 
-  const onFormSubmit = (event) => {
+  const onFormSubmit = (_event) => {
     captchaVerified
       ? emailjs
           .send(

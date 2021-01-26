@@ -19,10 +19,6 @@ const ProfileIntro = styled.main`
 `;
 
 const Page = () => {
-  // useEffect(() => {
-  //   //document.getElementById("intro").scrollIntoView();
-  // }, []);
-
   return (
     <>
       <Header />
