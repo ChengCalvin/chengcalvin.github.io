@@ -70,7 +70,6 @@ const Contact = () => {
   };
 
   const onFormSubmit = (event) => {
-    event.preventDefault();
     captchaVerified
       ? emailjs
           .send(
