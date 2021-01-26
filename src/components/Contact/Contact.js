@@ -45,6 +45,8 @@ const StyledTextField = styled(TextField)`
 const StyledButton = styled(Button)`
   && {
     background-color: #337d87;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
     :hover {
       background-color: rgb(130, 196, 159, 0.7);
     }
@@ -139,7 +141,9 @@ const Contact = () => {
             )}
             <StyledButton type="submit">Send</StyledButton>
             {messageIsSent ? (
-              <StyledTypography variant="body1">Message Sent</StyledTypography>
+              <StyledTypography variant="body1">
+                Message Sent! Thank you, You can click outside the box ;)
+              </StyledTypography>
             ) : (
               <></>
             )}
