@@ -116,7 +116,7 @@ const Intro = () => {
                   I am Full-Stack Software Developer with an Electrical
                   Engineering background, and I am always thinking about things
                   I can do to shape the world of today. <br />
-                  <br />I enjoy to sports, exploring new food and places,
+                  <br />I enjoy doing sports, exploring new food and places,
                   learning about business and investments, and coding.
                 </p>
                 <SocialMedia />
