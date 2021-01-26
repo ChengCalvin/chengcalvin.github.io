@@ -4,13 +4,11 @@ import Page from "./components/PageContent/Page";
 
 function App() {
   return (
-    <>
+    <div className="App">
       <Route exact path="/">
-        <div className="App">
-          <Page />
-        </div>
+        <Page />
       </Route>
-    </>
+    </div>
   );
 }
 

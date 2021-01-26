@@ -51,6 +51,10 @@ const StyledButton = styled(Button)`
   }
 `;
 
+const StyledTypography = styled(Typography)`
+  color: gray;
+`;
+
 const Contact = () => {
   const [contactForm, setContactForm] = useState({
     name: "",
@@ -69,6 +73,8 @@ const Contact = () => {
     });
   };
 
+  const [messageIsSent, setMessageIsSent] = useState(false);
+
   const onFormSubmit = (event) => {
     event.preventDefault();
     captchaVerified
@@ -80,9 +86,11 @@ const Contact = () => {
             process.env.REACT_APP_USER_ID
           )
           .then((response) => {
-            console.log(response);
-            setCaptchaVerified(false);
-            history.push("/");
+            if (response.status === 200) {
+              setCaptchaVerified(false);
+              setMessageIsSent(true);
+              history.push("/");
+            }
           })
       : alert("Please verify that you are not a robot.");
   };
@@ -130,6 +138,11 @@ const Contact = () => {
               <></>
             )}
             <StyledButton type="submit">Send</StyledButton>
+            {messageIsSent ? (
+              <StyledTypography variant="body1">Message Sent</StyledTypography>
+            ) : (
+              <></>
+            )}
           </Form>
         </Content>
       </Paper>
