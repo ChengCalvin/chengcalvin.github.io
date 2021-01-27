@@ -77,24 +77,58 @@ const Contact = () => {
 
   const [messageIsSent, setMessageIsSent] = useState(false);
 
+  const [nameIsValidated, setNameIsValidated] = useState(true);
+  const [emailIsValidated, setEmailIsValidated] = useState(true);
+  const [msgIsValidated, setMsgIsValidated] = useState(true);
+
+  const formInputIsValidated = () => {
+    if (contactForm.name === "") setNameIsValidated(false);
+    else setNameIsValidated(true);
+
+    if (
+      contactForm.email === "" ||
+      !contactForm.email.includes("@", ".com", ".ca")
+    )
+      setEmailIsValidated(false);
+    else setEmailIsValidated(true);
+
+    if (contactForm.message === "") setMsgIsValidated(false);
+    else setMsgIsValidated(true);
+  };
+
   const onFormSubmit = (event) => {
     event.preventDefault();
-    captchaVerified
-      ? emailjs
-          .send(
-            process.env.REACT_APP_SERVICE_ID,
-            process.env.REACT_APP_TEMPLATE_ID,
-            contactForm,
-            process.env.REACT_APP_USER_ID
-          )
-          .then((response) => {
-            if (response.status === 200) {
-              setCaptchaVerified(false);
-              setMessageIsSent(true);
-              history.go(0);
-            }
-          })
-      : alert("Please verify that you are not a robot.");
+
+    formInputIsValidated();
+
+    // if(!nameIsValidated &&
+    //   !emailIsValidated &&
+    //   !msgIsValidated)
+    if (
+      !captchaVerified &&
+      nameIsValidated &&
+      !emailIsValidated &&
+      msgIsValidated
+    )
+      alert("Please verify that you are not a robot.");
+
+    if (captchaVerified) {
+      emailjs
+        .send(
+          process.env.REACT_APP_SERVICE_ID,
+          process.env.REACT_APP_TEMPLATE_ID,
+          contactForm,
+          process.env.REACT_APP_USER_ID
+        )
+        .then((response) => {
+          if (response.status === 200) {
+            setCaptchaVerified(false);
+            setMessageIsSent(true);
+            history.go(0);
+          }
+        })
+        .catch((error) => console.log(error));
+    }
   };
 
   const captchaIsVerified = () => {
@@ -105,8 +139,16 @@ const Contact = () => {
     <Container>
       <Paper elevation={3}>
         <Content>
-          <Typography variant="h5">Reach out to me here!</Typography>
+          <Typography variant="h5">Reach out to me here! 👋</Typography>
+
           <Form onSubmit={onFormSubmit}>
+            {nameIsValidated ? (
+              <></>
+            ) : (
+              <Typography variant="body2" color="secondary">
+                Name Required
+              </Typography>
+            )}
             <StyledTextField
               name="name"
               label="Name"
@@ -114,6 +156,13 @@ const Contact = () => {
               onChange={formFieldChangeHandler}
               variant="outlined"
             />
+            {emailIsValidated ? (
+              <></>
+            ) : (
+              <Typography variant="body2" color="secondary">
+                Please Enter a Valid Email
+              </Typography>
+            )}
             <StyledTextField
               name="email"
               label="Email"
@@ -121,6 +170,13 @@ const Contact = () => {
               onChange={formFieldChangeHandler}
               variant="outlined"
             />
+            {msgIsValidated ? (
+              <></>
+            ) : (
+              <Typography variant="body2" color="secondary">
+                Please Leave a Message
+              </Typography>
+            )}
             <StyledTextField
               name="message"
               label="Message"
@@ -131,6 +187,7 @@ const Contact = () => {
             />
             {contactForm.name !== "" &&
             contactForm.email !== "" &&
+            contactForm.email.includes("@", ".com", ".ca") &&
             contactForm.message !== "" ? (
               <ReCAPTCHA
                 sitekey={process.env.REACT_APP_RECAPTCHA_KEY}
