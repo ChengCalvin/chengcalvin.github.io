@@ -105,29 +105,133 @@ const CustomizedTimeline = () => {
             <TimelineContainer>
               <Timeline align="alternate">
                 <TimelineItem>
-                  <TimelineContent>
-                    <Zoom in={isVisible} timeout={5000}>
-                      <StyledTypography align="right" variant="body1">
-                        <b>Today</b>
+                  <TimelineOppositeContent>
+                    <Zoom in={isVisible} timeout={4000}>
+                      <StyledTypography variant="body1">
+                        <b>Summer, 2021</b>
                       </StyledTypography>
                     </Zoom>
-                  </TimelineContent>
+                  </TimelineOppositeContent>
                   <TimelineSeparator>
                     <TimelineDot
                       className={classes.secondaryTail}
                     ></TimelineDot>
                     <TimelineConnector className={classes.secondaryTail} />
                   </TimelineSeparator>
-                  <TimelineOppositeContent>
-                    <Slide direction="left" in={isVisible} timeout={5000}>
-                      <Paper className={classes.paper}>
-                        <Typography align="left">
-                          Continuous learning
-                        </Typography>
+                  <TimelineContent>
+                    <Slide direction="right" in={isVisible} timeout={6000}>
+                      <Paper elevation={3} className={classes.paper}>
+                        <TimelineItemTitle>
+                          <Typography variant="h6" component="h1" align="left">
+                            Thirdbridge | Software Developer
+                          </Typography>
+                          <IconBox>
+                            {openExperience === "tb" ? (
+                              <ArrowDropUpIcon
+                                onClick={() => setOpenExperience("")}
+                              />
+                            ) : (
+                              <ArrowDropDownIcon
+                                onClick={() => setOpenExperience("tb")}
+                              />
+                            )}
+                          </IconBox>
+                        </TimelineItemTitle>
+
+                        {openExperience === "tb" ? (
+                          <Zoom in={openExperience === "tb"} timeout={1000}>
+                            <div>
+                              <Typography align="left">
+                                • Developed a feedback modal after a bad rating
+                                to prompt users to leave a comment on their
+                                experience using Circle K EasyFuel. This
+                                information is crucial for Circle K to improve
+                                the UX/UI of customers.
+                              </Typography>
+                              <Typography align="left">
+                                • Implemented a Referral method using Firebase
+                                Dynamic Links for users to have a method to
+                                share the applications with their friends. The
+                                Firebase analytical feature are important data
+                                used by Circle K to improve their services.
+                              </Typography>
+                            </div>
+                          </Zoom>
+                        ) : (
+                          <></>
+                        )}
                       </Paper>
                     </Slide>
-                  </TimelineOppositeContent>
+                  </TimelineContent>
                 </TimelineItem>
+
+                <TimelineItem>
+                  <TimelineOppositeContent>
+                    <Zoom in={isVisible} timeout={7000}>
+                      <StyledTypography variant="body1">
+                        <b>Winter, 2021</b>
+                      </StyledTypography>
+                    </Zoom>
+                  </TimelineOppositeContent>
+                  <TimelineSeparator>
+                    <TimelineDot
+                      className={classes.secondaryTail}
+                    ></TimelineDot>
+                    <TimelineConnector className={classes.secondaryTail} />
+                  </TimelineSeparator>
+                  <TimelineContent>
+                    <Slide direction="left" in={isVisible} timeout={5000}>
+                      <Paper elevation={3} className={classes.paper}>
+                        <TimelineItemTitle>
+                          <Typography align="left" variant="h6">
+                            Onepoint @ Société Générale | Operation and Support
+                            Analyst
+                          </Typography>
+                          <IconBox>
+                            {openExperience === "onepoint" ? (
+                              <ArrowDropUpIcon
+                                onClick={() => setOpenExperience("")}
+                              />
+                            ) : (
+                              <ArrowDropDownIcon
+                                onClick={() => setOpenExperience("onepoint")}
+                              />
+                            )}
+                          </IconBox>
+                        </TimelineItemTitle>
+                        {openExperience === "onepoint" ? (
+                          <Zoom
+                            in={openExperience === "onepoint"}
+                            timeout={1000}
+                          >
+                            <div>
+                              <Typography align="left">
+                                • Resolve day to day incidents rapidly with the
+                                internal trading systems to prevent traders from
+                                missing crucial trades throughout the day.
+                                Resolved missing data in regulatory reports
+                                which prevented the company from receiving
+                                high-cost penalty.
+                              </Typography>
+                              <Typography align="left">
+                                • Ensured stock trades regulatory reports are
+                                sent out at the end of the day through the
+                                internal pipeline.
+                              </Typography>
+                              <Typography align="left">
+                                • Refined the teams’ documentation to allow easy
+                                on boarding for the future employees
+                              </Typography>
+                            </div>
+                          </Zoom>
+                        ) : (
+                          <></>
+                        )}
+                      </Paper>
+                    </Slide>
+                  </TimelineContent>
+                </TimelineItem>
+
                 <TimelineItem>
                   <TimelineOppositeContent>
                     <Zoom in={isVisible} timeout={4000}>
