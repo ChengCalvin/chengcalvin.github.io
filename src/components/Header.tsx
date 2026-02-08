@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
 
@@ -13,6 +14,8 @@ const navLinks = [
   { label: "Contact", href: "#contact" },
 ];
 
+const logoSize = 64;
+
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -21,8 +24,22 @@ export default function Header() {
       <nav className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
         <a
           href="#"
-          className="text-lg font-semibold tracking-tight text-gray-900 dark:text-white"
+          className="flex items-center gap-2 text-lg font-semibold tracking-tight text-gray-900 dark:text-white"
         >
+          <Image
+            src="/portfolio-logo.png"
+            alt=""
+            width={logoSize}
+            height={logoSize}
+            className="block dark:hidden"
+          />
+          <Image
+            src="/portfolio-logo-white.png"
+            alt=""
+            width={logoSize}
+            height={logoSize}
+            className="hidden dark:block"
+          />
           Calvin Cheng
         </a>
 
