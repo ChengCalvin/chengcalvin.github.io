@@ -2,15 +2,31 @@ import { TimelineEntry, SkillCategory } from "./types";
 
 export const personalInfo = {
   name: "Calvin Cheng",
-  title: "Full-Stack Developer",
+  title: "Frontend Software Engineer",
   location: "Montreal, QC",
   bio: "Self-taught software developer with an electrical engineering background. I traded circuits for code and never looked back — building clean, user-focused web applications with modern technologies.",
-  email: "calvinchengg@outlook.com",
+  email: "calvin.cheng.software@gmail.com",
   github: "https://github.com/ChengCalvin",
   linkedin: "https://www.linkedin.com/in/calvincheng95/",
 };
 
 export const timeline: TimelineEntry[] = [
+  {
+    year: "2023",
+    title: "Frontend Software Engineer",
+    subtitle: "Generix Group",
+    description:
+      "Leading migration from legacy Preact to modern React for a CMS platform serving 3,000+ warehouse management pages. Designed hybrid routing architecture and unified navigation across frameworks. Championed an AI-powered internal knowledge search initiative presented to C-suite.",
+    type: "work",
+  },
+  {
+    year: "2021",
+    title: "Full Stack Developer",
+    subtitle: "onepoint",
+    description:
+      "Built React frontend components for a smart building platform with Autodesk Forge 3D visualization. Developed recurring payment functionality using Java and Moneris API integration.",
+    type: "work",
+  },
   {
     year: "2021",
     title: "Software Developer",

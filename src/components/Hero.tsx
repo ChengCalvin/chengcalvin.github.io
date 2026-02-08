@@ -45,7 +45,7 @@ export default function Hero() {
             View My Work
           </a>
           <a
-            href="/Calvin_Cheng_CV.pdf"
+            href="/Calvin_Cheng_Resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="rounded-full border border-gray-300 px-6 py-2.5 text-sm font-medium text-gray-700 transition-colors hover:border-primary-dark hover:text-primary-dark dark:border-gray-700 dark:text-gray-300 dark:hover:border-primary dark:hover:text-primary"

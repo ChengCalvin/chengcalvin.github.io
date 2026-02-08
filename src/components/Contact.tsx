@@ -20,7 +20,7 @@ const links = [
   },
   {
     label: "Resume",
-    href: "/Calvin_Cheng_CV.pdf",
+    href: "/Calvin_Cheng_Resume.pdf",
     icon: FileText,
   },
 ];
