@@ -1,13 +1,36 @@
-# Project Overview
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-The purpose of this project is to build a personal portofolio website to display my past experiences and achievements.
+## Getting Started
 
-#### Website Portfolio Link:  [chengcalvin.github.io](chengcalvin.github.io)
+First, run the development server:
 
-# Design
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-For this website, I have used <b><i>React.js</i></b> as the framework for the frontend with <b><i>Material-UI</i></b> and <b><i>Styled Components</i></b> for styling the components. I used <b><i>Emailjs</i></b> to connect the contact form to my email directly and <b><i>Google ReCaptcha</i></b> to reduce potential spams from bots.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-With <b><i>Material-UI</i></b> I have added the animation API and included a visibility tracker on the components to render only when the components are shown in the viewport.
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-The focus of this project was put on getting familiar with Styled Components with Material-UI and the ability to overwrite Material-UI behavior.
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
