@@ -1,4 +1,4 @@
-import { TimelineEntry, SkillCategory } from "./types";
+import { TimelineEntry, SkillCategory, Service } from "./types";
 
 export const personalInfo = {
   name: "Calvin Cheng",
@@ -82,6 +82,27 @@ export const timeline: TimelineEntry[] = [
     description:
       "Graduated with a degree in Electrical Engineering. The analytical thinking and problem-solving skills I gained continue to shape my approach to software development.",
     type: "education",
+  },
+];
+
+export const services: Service[] = [
+  {
+    title: "Frontend Development",
+    description:
+      "Interactive, performant web apps built with React, Next.js, and TypeScript. From SPAs to complex dashboards — pixel-perfect and accessible.",
+    icon: "Code",
+  },
+  {
+    title: "Website Builds",
+    description:
+      "End-to-end website design and development. Responsive, SEO-friendly sites tailored to your brand and ready to launch.",
+    icon: "Globe",
+  },
+  {
+    title: "Migration & Modernization",
+    description:
+      "Upgrading legacy codebases to modern frameworks. Incremental migration strategies that keep your product running while improving the stack.",
+    icon: "RefreshCw",
   },
 ];
 

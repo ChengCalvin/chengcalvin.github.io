@@ -23,3 +23,9 @@ export interface SkillCategory {
   name: string;
   skills: string[];
 }
+
+export interface Service {
+  title: string;
+  description: string;
+  icon: string;
+}
