@@ -12,7 +12,7 @@ export const personalInfo = {
 
 export const timeline: TimelineEntry[] = [
   {
-    year: "2023",
+    year: "Present",
     title: "Frontend Software Engineer",
     subtitle: "Generix Group",
     description:
